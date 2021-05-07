@@ -1,5 +1,8 @@
+/* eslint-disable no-alert */
+/* eslint-disable no-console */
 import React, { useCallback, useRef, useEffect } from 'react';
 
+import api from '@lib/api';
 import {
   Container,
   Title,
@@ -14,7 +17,7 @@ import {
 function RegisterForm() {
   const firstInputRef = useRef(null);
 
-  const handleSubmit = useCallback((event) => {
+  const handleSubmit = useCallback(async (event) => {
     event.preventDefault();
 
     const { target: form } = event;
@@ -28,8 +31,20 @@ function RegisterForm() {
       alert('As senhas não são iguais');
     }
 
-    // eslint-disable-next-line no-console
-    console.log({ name, email, password, confirmPassword });
+    try {
+      await api.post('users/create', {
+        name,
+        email,
+        password,
+      });
+
+      alert('Conta criada com sucesso!');
+
+      window.location.href = '/login';
+    } catch (err) {
+      console.log({ err });
+      alert(err?.response?.data || 'Não foi possível criar a conta');
+    }
   }, []);
 
   useEffect(() => {

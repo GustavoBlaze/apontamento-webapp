@@ -39,6 +39,7 @@ module.exports = {
         map: [
           ['@styles', './src/styles'],
           ['@components', './src/components'],
+          ['@lib', './src/lib'],
         ],
         extensions: ['.js', '.jsx', '.json'],
       },
