@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import React, { useCallback, useRef, useEffect } from 'react';
 
 import {
   Container,
@@ -12,6 +12,8 @@ import {
 } from './styles';
 
 function RegisterForm() {
+  const firstInputRef = useRef(null);
+
   const handleSubmit = useCallback((event) => {
     event.preventDefault();
 
@@ -20,10 +22,19 @@ function RegisterForm() {
     const name = form.name.value;
     const email = form.email.value;
     const password = form.password.value;
+    const confirmPassword = form.confirmPassword.value;
+
+    if (password !== confirmPassword) {
+      alert('As senhas não são iguais');
+    }
 
     // eslint-disable-next-line no-console
-    console.log({ name, email, password });
+    console.log({ name, email, password, confirmPassword });
   }, []);
+
+  useEffect(() => {
+    firstInputRef?.current?.focus();
+  }, [firstInputRef]);
 
   return (
     <Container>
@@ -31,18 +42,19 @@ function RegisterForm() {
       <Form onSubmit={handleSubmit}>
         <FormGroup>
           <Label>Nome:</Label>
-          <Input type="text" name="name" required autoComplete="on" autoFocus />
+          <Input
+            ref={firstInputRef}
+            tabIndex={0}
+            type="text"
+            name="name"
+            required
+            autoComplete="on"
+          />
         </FormGroup>
 
         <FormGroup>
           <Label>Email:</Label>
-          <Input
-            type="email"
-            name="email"
-            required
-            autoComplete="on"
-            autoFocus
-          />
+          <Input type="email" name="email" required autoComplete="on" />
         </FormGroup>
 
         <FormGroup>
@@ -51,12 +63,21 @@ function RegisterForm() {
             type="password"
             name="password"
             required
-            autoComplete="current-password"
-            autoFocus
+            autoComplete="new-password"
           />
         </FormGroup>
 
-        <Button>Acessar</Button>
+        <FormGroup>
+          <Label>Confirmar senha:</Label>
+          <Input
+            type="password"
+            name="confirmPassword"
+            required
+            autoComplete="new-password"
+          />
+        </FormGroup>
+
+        <Button>Criar conta</Button>
       </Form>
       <Observation href="/login">Já possui conta? Faça login!</Observation>
     </Container>
