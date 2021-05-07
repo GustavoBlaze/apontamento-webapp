@@ -52,7 +52,9 @@ function LoginForm() {
 
         <Button>Acessar</Button>
       </Form>
-      <Observation>Não possui conta? Crie uma agora!</Observation>
+      <Observation href="/register">
+        Não possui conta? Crie uma agora!
+      </Observation>
     </Container>
   );
 }
