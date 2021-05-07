@@ -1,12 +1,12 @@
 import styled from 'styled-components';
 
-import Heading from '@components/Heading';
+import Heading from '@components/core/Heading';
 
-export { default as Label } from '@components/Label';
-export { default as Form } from '@components/Form';
-export { default as Input } from '@components/Input';
-export { default as FormGroup } from '@components/FormGroup';
-export { default as Button } from '@components/Button';
+export { default as Label } from '@components/core/Label';
+export { default as Form } from '@components/core/Form';
+export { default as Input } from '@components/core/Input';
+export { default as FormGroup } from '@components/core/FormGroup';
+export { default as Button } from '@components/core/Button';
 
 export const Container = styled.div`
   height: 100%;
