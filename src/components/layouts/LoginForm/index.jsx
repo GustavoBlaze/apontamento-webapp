@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import React, { useCallback, useEffect, useRef } from 'react';
 
 import {
   Container,
@@ -12,6 +12,8 @@ import {
 } from './styles';
 
 function LoginForm() {
+  const firstInputRef = useRef(null);
+
   const handleSubmit = useCallback((event) => {
     event.preventDefault();
 
@@ -24,6 +26,10 @@ function LoginForm() {
     console.log({ email, password });
   }, []);
 
+  useEffect(() => {
+    firstInputRef?.current?.focus();
+  }, [firstInputRef]);
+
   return (
     <Container>
       <Title>Login</Title>
@@ -31,11 +37,11 @@ function LoginForm() {
         <FormGroup>
           <Label>Email:</Label>
           <Input
+            ref={firstInputRef}
             type="email"
             name="email"
             required
             autoComplete="on"
-            autoFocus
           />
         </FormGroup>
 
@@ -46,7 +52,6 @@ function LoginForm() {
             name="password"
             required
             autoComplete="current-password"
-            autoFocus
           />
         </FormGroup>
 
