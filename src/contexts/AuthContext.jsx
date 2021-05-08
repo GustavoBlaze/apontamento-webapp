@@ -16,6 +16,7 @@ export function AuthProvider({ defaultUser, children }) {
     const { 'apontamento.token': token } = parseCookies();
 
     if (token) {
+      api.defaults.headers.Authorization = `Bearer ${token}`;
       const { id, name, email } = jwt.decode(token);
       setUser({ id, name, email });
     }
@@ -37,6 +38,8 @@ export function AuthProvider({ defaultUser, children }) {
         name: decoded?.name,
         email: decoded?.email,
       });
+
+      api.defaults.headers.Authorization = `Bearer ${token}`;
 
       Router.push('/');
     } catch (err) {
