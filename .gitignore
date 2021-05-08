@@ -37,3 +37,4 @@ yarn-error.log*
 *.db-journal
 prisma/migrations
 prisma/node_modules
+.env
