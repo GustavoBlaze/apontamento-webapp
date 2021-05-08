@@ -32,6 +32,7 @@ module.exports = {
     indent: 'off',
     'jsx-a11y/control-has-associated-label': 'off',
     'react/forbid-prop-types': 'off',
+    'no-return-await': 'off',
   },
   settings: {
     'import/resolver': {
@@ -41,6 +42,7 @@ module.exports = {
           ['@components', './src/components'],
           ['@lib', './src/lib'],
           ['@contexts', './src/contexts'],
+          ['@utils', './src/utils'],
         ],
         extensions: ['.js', '.jsx', '.json'],
       },
