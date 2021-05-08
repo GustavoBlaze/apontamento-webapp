@@ -26,7 +26,13 @@ export function withAuth(callback) {
 
       return await callback({ ...req, user }, res);
     } catch (err) {
-      return res.status(401).send('Token inválido');
+      if (err?.name === 'JsonWebTokenError') {
+        return res.status(401).send('Token inválido');
+      }
+
+      // eslint-disable-next-line no-console
+      console.log({ err });
+      return res.status(500).send('Erro interno');
     }
   };
 }
