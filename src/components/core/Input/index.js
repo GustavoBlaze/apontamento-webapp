@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const Input = styled.input`
+export default styled.input`
   border-radius: 0.4rem;
   font-size: 1.6rem;
   line-height: 1.6rem;
@@ -8,5 +8,3 @@ export const Input = styled.input`
   color: var(--text-color);
   border: 1px solid var(--text-color);
 `;
-
-export default Input;
