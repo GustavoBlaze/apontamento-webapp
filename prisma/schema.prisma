@@ -7,6 +7,23 @@ datasource db {
   url      = "file:database.db"
 }
 
+// SQLite não suporta Enum
+// enum EntryPointAction {
+//   ENTRADA
+//   SAIDA_PARA_ALMOCO
+//   VOLTA_DO_ALMOCO
+//   SAIDA
+// }
+
+model EntryPoint {
+  id        Int      @id @default(autoincrement())
+  action    String
+  userId    Int      @map("user_id")
+  user      User     @relation(fields: [userId], references: [id])
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+}
+
 model User {
   id        Int      @id @default(autoincrement())
   name      String
@@ -15,5 +32,6 @@ model User {
   createdAt DateTime @default(now()) @map("created_at")
   updatedAt DateTime @updatedAt @map("updated_at")
 
+  EntryPoint EntryPoint[]
   @@map("users")
 }

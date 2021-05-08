@@ -1,0 +1,9 @@
+-- CreateTable
+CREATE TABLE "EntryPoint" (
+    "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+    "action" TEXT NOT NULL,
+    "user_id" INTEGER NOT NULL,
+    "created_at" DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updated_at" DATETIME NOT NULL,
+    FOREIGN KEY ("user_id") REFERENCES "users" ("id") ON DELETE CASCADE ON UPDATE CASCADE
+);
