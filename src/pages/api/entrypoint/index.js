@@ -10,6 +10,12 @@ async function handler(req, res) {
     where: {
       userId: user.id,
     },
+    select: {
+      id: true,
+      action: true,
+      createdAt: true,
+    },
+
     orderBy: {
       createdAt: 'desc',
     },
