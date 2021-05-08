@@ -18,6 +18,10 @@ const Button = styled.button`
     opacity: 0.8;
     transform: translateY(-0.2rem);
   }
+
+  &:disabled {
+    opacity: 0.5;
+  }
 `;
 
 export default Button;
