@@ -40,6 +40,7 @@ module.exports = {
           ['@styles', './src/styles'],
           ['@components', './src/components'],
           ['@lib', './src/lib'],
+          ['@contexts', './src/contexts'],
         ],
         extensions: ['.js', '.jsx', '.json'],
       },
