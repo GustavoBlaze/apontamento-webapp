@@ -3,7 +3,8 @@ import jwt from 'jsonwebtoken';
 import bcrypt from 'bcryptjs';
 
 export default async (req, res) => {
-  if (req.method !== 'POST') return res.status(400).send('bad request');
+  if (req.method !== 'POST')
+    return res.status(400).send('Verifique seus dados');
 
   const { email, password } = req.body;
 
@@ -14,7 +15,7 @@ export default async (req, res) => {
   });
 
   if (!authenticatedUser) {
-    return res.status(401).send('user does not exist');
+    return res.status(401).send('Usuário não existe');
   }
 
   const passwordIsCorrect = await bcrypt.compare(
@@ -23,7 +24,7 @@ export default async (req, res) => {
   );
 
   if (!passwordIsCorrect) {
-    return res.status(401).send('wrong password');
+    return res.status(401).send('Senha incorreta');
   }
 
   const { id, name } = authenticatedUser;

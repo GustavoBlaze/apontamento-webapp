@@ -13,7 +13,7 @@ export default async (req, res) => {
   });
 
   if (existentUser) {
-    return res.status(401).send('user already exists');
+    return res.status(401).send('Já existe um usuário com este email');
   }
 
   const hashedPassword = await bcrypt.hash(password, 8);
