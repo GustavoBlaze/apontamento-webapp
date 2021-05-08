@@ -16,18 +16,10 @@ export function withSSRAuth(callback) {
       };
     }
 
-    try {
-      const decoded = await promisify(jwt.verify)(
-        token,
-        process.env.JWT_SECRET,
-      );
-      const user = {
-        id: decoded.id,
-        name: decoded.name,
-        email: decoded.email,
-      };
+    let decoded;
 
-      return await callback({ ...ctx, user });
+    try {
+      decoded = await promisify(jwt.verify)(token, process.env.JWT_SECRET);
     } catch (err) {
       destroyCookie(ctx, 'apontamento.token');
 
@@ -38,5 +30,13 @@ export function withSSRAuth(callback) {
         },
       };
     }
+
+    const user = {
+      id: decoded.id,
+      name: decoded.name,
+      email: decoded.email,
+    };
+
+    return await callback({ ...ctx, user });
   };
 }
