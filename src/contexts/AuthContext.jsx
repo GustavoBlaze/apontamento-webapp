@@ -2,8 +2,9 @@
 import { createContext, useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import jwt from 'jsonwebtoken';
-import { setCookie, parseCookies } from 'nookies';
+import { setCookie, parseCookies, destroyCookie } from 'nookies';
 import api from '@lib/api';
+import Router from 'next/router';
 
 export const AuthContext = createContext({});
 
@@ -36,13 +37,20 @@ export function AuthProvider({ children }) {
         name: decoded?.name,
         email: decoded?.email,
       });
+
+      Router.push('/');
     } catch (err) {
       alert(err?.response?.data || 'Não foi possível logar');
     }
   }
 
+  async function signOut() {
+    destroyCookie(undefined, 'apontamento.token');
+    setUser(null);
+  }
+
   return (
-    <AuthContext.Provider value={{ user, signIn, isAuthenticated }}>
+    <AuthContext.Provider value={{ user, signIn, signOut, isAuthenticated }}>
       {children}
     </AuthContext.Provider>
   );
