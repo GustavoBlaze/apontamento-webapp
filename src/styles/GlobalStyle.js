@@ -12,6 +12,11 @@ export const GlobalStyle = createGlobalStyle`
   body,
   #__next {
     height: 100%;
+    box-sizing: border-box;
+  }
+
+  body * {
+    box-sizing: inherit;
   }
 
   html {
