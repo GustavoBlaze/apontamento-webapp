@@ -16,11 +16,11 @@ export const Container = styled.div`
 `;
 
 export const Title = styled(Heading)`
-  margin-bottom: 2.4rem;
+  margin-bottom: 1.6rem;
 `;
 
 export const Form = styled(CoreForm)`
-  margin-bottom: 1.6rem;
+  margin-bottom: 2.4rem;
   align-self: stretch;
   max-width: unset !important;
   width: 100%;
