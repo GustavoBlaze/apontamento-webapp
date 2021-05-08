@@ -1,11 +1,14 @@
 /* eslint-disable react/prop-types */
 import { GlobalStyle } from '@styles/GlobalStyle';
+import { AuthProvider } from '@contexts/AuthContext';
 
 function MyApp({ Component, pageProps }) {
   return (
     <>
       <GlobalStyle />
-      <Component {...pageProps} />
+      <AuthProvider>
+        <Component {...pageProps} />
+      </AuthProvider>
     </>
   );
 }
