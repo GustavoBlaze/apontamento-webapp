@@ -8,8 +8,8 @@ import Router from 'next/router';
 
 export const AuthContext = createContext({});
 
-export function AuthProvider({ children }) {
-  const [user, setUser] = useState(null);
+export function AuthProvider({ defaultUser, children }) {
+  const [user, setUser] = useState(defaultUser);
   const isAuthenticated = !!user?.email;
 
   useEffect(() => {
@@ -58,6 +58,7 @@ export function AuthProvider({ children }) {
 
 AuthProvider.defaultProps = {
   children: undefined,
+  defaultUser: null,
 };
 
 AuthProvider.propTypes = {
@@ -65,4 +66,9 @@ AuthProvider.propTypes = {
     PropTypes.node,
     PropTypes.arrayOf(PropTypes.node),
   ]),
+  defaultUser: PropTypes.shape({
+    id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+    name: PropTypes.string,
+    email: PropTypes.string,
+  }),
 };

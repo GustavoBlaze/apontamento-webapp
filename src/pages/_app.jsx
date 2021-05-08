@@ -3,10 +3,12 @@ import { GlobalStyle } from '@styles/GlobalStyle';
 import { AuthProvider } from '@contexts/AuthContext';
 
 function MyApp({ Component, pageProps }) {
+  const { user } = pageProps;
+
   return (
     <>
       <GlobalStyle />
-      <AuthProvider>
+      <AuthProvider defaultUser={user || null}>
         <Component {...pageProps} />
       </AuthProvider>
     </>
