@@ -1,4 +1,6 @@
-import React, { useCallback, useEffect, useRef } from 'react';
+import React, { useCallback, useEffect, useRef, useContext } from 'react';
+
+import { AuthContext } from '@contexts/AuthContext';
 
 import {
   Container,
@@ -14,6 +16,8 @@ import {
 function LoginForm() {
   const firstInputRef = useRef(null);
 
+  const { signIn } = useContext(AuthContext);
+
   const handleSubmit = useCallback((event) => {
     event.preventDefault();
 
@@ -22,8 +26,7 @@ function LoginForm() {
     const email = form.email.value;
     const password = form.password.value;
 
-    // eslint-disable-next-line no-console
-    console.log({ email, password });
+    signIn({ email, password });
   }, []);
 
   useEffect(() => {
