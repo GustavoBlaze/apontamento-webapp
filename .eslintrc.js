@@ -33,6 +33,7 @@ module.exports = {
     'jsx-a11y/control-has-associated-label': 'off',
     'react/forbid-prop-types': 'off',
     'no-return-await': 'off',
+    'no-alert': 'off',
   },
   settings: {
     'import/resolver': {
