@@ -29,6 +29,7 @@ function RegisterForm() {
 
     if (password !== confirmPassword) {
       alert('As senhas não são iguais');
+      return;
     }
 
     try {
