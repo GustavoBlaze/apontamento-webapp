@@ -13,7 +13,7 @@ const actions = {
 
 function Card({ entryPoint }) {
   const action = actions[entryPoint.action];
-  const hour = format(new Date(entryPoint.createdAt), 'H:m');
+  const hour = format(new Date(entryPoint.createdAt), 'HH:mm');
 
   return (
     <Container>
