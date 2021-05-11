@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import useSWR from 'swr';
 
 import { withSSRAuth } from '@utils/withSSRAuth';
 import NewEntryPointForm from '@components/layouts/NewEntryPointForm';
@@ -7,6 +8,7 @@ import PageContainer from '@components/core/PageContainer';
 import EntryPointList from '@components/layouts/EntryPointList';
 
 import prisma from '@lib/prisma';
+import api from '@lib/api';
 import groupBy from 'lodash/groupBy';
 import { format } from 'date-fns';
 
@@ -49,11 +51,18 @@ export const getServerSideProps = withSSRAuth(async ({ user }) => {
   };
 });
 
+const fetcher = async (...args) => {
+  const { data } = await api.get(...args);
+
+  return data;
+};
 export default function Home({ entryPoints }) {
+  const { data } = useSWR('entrypoint', fetcher, { initialData: entryPoints });
+
   return (
     <PageContainer>
       <NewEntryPointForm />
-      <EntryPointList entryPoints={entryPoints} />
+      <EntryPointList entryPoints={data} />
     </PageContainer>
   );
 }
