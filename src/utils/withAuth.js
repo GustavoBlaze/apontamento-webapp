@@ -26,7 +26,7 @@ export function withAuth(callback) {
 
       return await callback({ ...req, user }, res);
     } catch (err) {
-      if (err?.name === 'JsonWebTokenError') {
+      if (['TokenExpiredError', 'JsonWebTokenError'].includes(err?.name)) {
         return res.status(401).send('Token inválido');
       }
 
