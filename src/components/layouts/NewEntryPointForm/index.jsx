@@ -1,6 +1,7 @@
 import React, { useCallback, useState } from 'react';
 
 import api from '@lib/api';
+
 import {
   Container,
   Title,
@@ -9,6 +10,8 @@ import {
   Select,
   FormGroup,
   Button,
+  LogoutButton,
+  Header,
 } from './styles';
 
 function NewEntryPointForm() {
@@ -37,7 +40,10 @@ function NewEntryPointForm() {
 
   return (
     <Container>
-      <Title>Novo apontamento</Title>
+      <Header>
+        <Title>Novo apontamento</Title>
+        <LogoutButton />
+      </Header>
       <Form onSubmit={handleSubmit}>
         <FormGroup>
           <Label>Selecione a ação:</Label>

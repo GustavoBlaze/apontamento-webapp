@@ -9,15 +9,21 @@ import CoreFormGroup from '@components/core/FormGroup';
 import CoreButton from '@components/core/Button';
 
 export { default as Label } from '@components/core/Label';
+export { default as LogoutButton } from '@components/core/LogoutButton';
 
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
 `;
 
-export const Title = styled(Heading)`
+export const Header = styled.header`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   margin-bottom: 1.6rem;
 `;
+
+export const Title = styled(Heading)``;
 
 export const Form = styled(CoreForm)`
   margin-bottom: 2.4rem;
