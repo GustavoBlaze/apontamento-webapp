@@ -14,6 +14,25 @@ import {
   Header,
 } from './styles';
 
+const actions = [
+  {
+    value: 'ENTRADA',
+    text: 'Entrei na empresa',
+  },
+  {
+    value: 'SAIDA_ALMOCO',
+    text: 'Saí para almoçar',
+  },
+  {
+    value: 'VOLTA_ALMOCO',
+    text: 'Voltei do almoço',
+  },
+  {
+    value: 'SAIDA',
+    text: 'Saí da empresa',
+  },
+];
+
 function NewEntryPointForm() {
   const [isSending, setIsSending] = useState(false);
 
@@ -48,10 +67,11 @@ function NewEntryPointForm() {
         <FormGroup>
           <Label>Selecione a ação:</Label>
           <Select name="action">
-            <option value="ENTRADA">Entrei na empresa</option>
-            <option value="SAIDA_ALMOCO">Saí para almoçar</option>
-            <option value="VOLTA_ALMOCO">Voltei do almoço</option>
-            <option value="SAIDA">Saí da empresa</option>
+            {actions.map(({ value, text }) => (
+              <option key={value} value={value}>
+                {text}
+              </option>
+            ))}
           </Select>
         </FormGroup>
         <Button disabled={isSending}>Registrar</Button>
