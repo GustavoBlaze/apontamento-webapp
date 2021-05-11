@@ -50,6 +50,7 @@ export function AuthProvider({ defaultUser, children }) {
   async function signOut() {
     destroyCookie(undefined, 'apontamento.token');
     setUser(null);
+    Router.push('/login');
   }
 
   return (
