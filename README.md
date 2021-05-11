@@ -3,6 +3,7 @@
 Essa é uma aplicação feita em Next.js e React.js juntamente com o Prisma.io para servir como um pequeno sistema de apontamento de horas.
 
 **Video demonstração:** https://www.youtube.com/watch?v=2VA2GV0edkA
+<br/>
 **Link da aplicação:** https://apontamento-webapp.vercel.app/login
 
 ## Funcionalidades
