@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { differenceInDays } from 'date-fns';
-import { DateFormatted, List } from './styles';
+import { Container, DateFormatted, List } from './styles';
 import Card from '../Card';
 
 function DayAggregate({ date, entries }) {
@@ -15,14 +15,14 @@ function DayAggregate({ date, entries }) {
   const dateString = ['Hoje', 'Ontem', 'Anteontem'][daysDifference] || date;
 
   return (
-    <>
+    <Container>
       <DateFormatted>{dateString}</DateFormatted>
       <List>
         {entries.reverse().map((entry) => (
           <Card key={String(entry.id)} entryPoint={entry} />
         ))}
       </List>
-    </>
+    </Container>
   );
 }
 

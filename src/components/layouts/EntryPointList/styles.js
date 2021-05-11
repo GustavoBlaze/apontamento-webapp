@@ -10,3 +10,8 @@ export const Container = styled.div`
 export const Title = styled(Heading)`
   margin-bottom: 1.6rem;
 `;
+
+export const List = styled.div`
+  display: flex;
+  flex-direction: column;
+`;

@@ -1,6 +1,15 @@
 import styled from 'styled-components';
 import Heading from '@components/core/Heading';
 
+export const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+
+  &:not(:last-child) {
+    margin-bottom: 1.6rem;
+  }
+`;
+
 export const DateFormatted = styled(Heading)`
   font-size: 1.8rem;
   line-height: 2.4rem;
