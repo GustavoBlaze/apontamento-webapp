@@ -1,6 +1,7 @@
 /* eslint-disable no-alert */
 /* eslint-disable no-console */
 import React, { useCallback, useRef, useEffect } from 'react';
+import Link from 'next/link';
 
 import api from '@lib/api';
 import {
@@ -95,7 +96,9 @@ function RegisterForm() {
 
         <Button>Criar conta</Button>
       </Form>
-      <Observation href="/login">Já possui conta? Faça login!</Observation>
+      <Link href="/login" passHref>
+        <Observation href="/login">Já possui conta? Faça login!</Observation>
+      </Link>
     </Container>
   );
 }

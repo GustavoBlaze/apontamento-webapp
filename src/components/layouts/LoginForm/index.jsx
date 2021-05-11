@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useRef, useContext } from 'react';
-
+import Link from 'next/link';
 import { AuthContext } from '@contexts/AuthContext';
 
 import {
@@ -60,9 +60,11 @@ function LoginForm() {
 
         <Button>Acessar</Button>
       </Form>
-      <Observation href="/register">
-        Não possui conta? Crie uma agora!
-      </Observation>
+      <Link href="/register" passHref>
+        <Observation href="/register">
+          Não possui conta? Crie uma agora!
+        </Observation>
+      </Link>
     </Container>
   );
 }
